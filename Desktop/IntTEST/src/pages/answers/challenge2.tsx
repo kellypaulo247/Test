@@ -1,11 +1,19 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
-import Navbar from '../../components/challenges/nav';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import Navbar from '../../../src/components/challenges/NavBar';
 
 export default function NavbarScreen() {
   return (
-    <SafeAreaView >
+    <SafeAreaView  style={styles.root}>
       <Navbar />
     </SafeAreaView>
   );
 }
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 16,
+  },
+
+});

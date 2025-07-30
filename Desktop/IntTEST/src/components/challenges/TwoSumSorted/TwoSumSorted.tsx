@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import { twoSum } from '../../utils/calculate2SumSortedArray';
+import { twoSum } from '../../../utils/calculate2SumSortedArray';
 
-import CustomInput from '../shared/input';
+import CustomInput from '../../shared/input';
+import CustomButton from '../../button';
 
 export const TwoSum2Component = () => {
   const [numbers, setNumbers] = useState('');
@@ -13,24 +14,34 @@ export const TwoSum2Component = () => {
 
   const INPUT_REGEX = /^[0-9,\s]+$/;
 
-  const validateInputs = (): boolean => {
-    const newErrors: typeof errors = {};
+ const validateInputs = (): boolean => {
+  const newErrors: typeof errors = {};
 
-    if (!numbers.trim()) {
+  if (!numbers.trim()) {
+    newErrors.numbers = 'Please enter at least two numbers';
+  } else if (!INPUT_REGEX.test(numbers)) {
+    newErrors.numbers = 'Please enter only numbers separated by commas';
+  } else {
+    const numParts = numbers.split(',').map(n => n.trim());
+    const hasEmptyValues = numParts.some(part => part === '');
+
+    if (hasEmptyValues) {
+      newErrors.numbers = 'Each number must be valid and separated properly (e.g., 1, 2, 3)';
+    } else if (numParts.length < 2) {
       newErrors.numbers = 'Please enter at least two numbers';
-    } else if (!INPUT_REGEX.test(numbers)) {
-      newErrors.numbers = 'Please enter only numbers separated by commas';
     }
+  }
 
-    if (!target.trim()) {
-      newErrors.target = 'Please enter a target number';
-    } else if (isNaN(Number(target))) {
-      newErrors.target = 'Target must be a valid number';
-    }
+  if (!target.trim()) {
+    newErrors.target = 'Please enter a target number';
+  } else if (isNaN(Number(target))) {
+    newErrors.target = 'Target must be a valid number';
+  }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  setErrors(newErrors);
+  return Object.keys(newErrors).length === 0;
+};
+
 
   const handleCalculate = () => {
     if (!validateInputs()) {
@@ -74,7 +85,7 @@ export const TwoSum2Component = () => {
       />
       {errors.target && <Text style={styles.error}>{errors.target}</Text>}
 
-      <Button title="Calculate" onPress={handleCalculate} />
+      <CustomButton title="Calculate" onPress={handleCalculate} />
 
       <Text style={styles.result}>
         Result: {result.length > 0 ? `[${result.join(', ')}]` : '[ ]'}

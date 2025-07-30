@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import CustomInput from "../shared/input";
-import CustomButton from "../button";
+import CustomInput from "../../shared/input";
+import CustomButton from "../../button";
 
 export default function Calculator() {
   const [num1, setNum1] = useState("");

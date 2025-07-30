@@ -1,7 +1,7 @@
 
 
 import { AppRegistry } from 'react-native';
-import Navbar from './src/components/challenges/nav'; 
+import Navbar from './src/components/challenges/NavBar'; 
 import { name as appName } from './app.json';
 import { createRoot } from 'react-dom/client';
 

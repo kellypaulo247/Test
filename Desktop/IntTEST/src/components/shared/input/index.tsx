@@ -13,8 +13,15 @@ const CustomInput: React.FC<InputProps> = ({
 
 const styles = StyleSheet.create({
   input: {
-    borderWidth: 1,
-    borderColor: '#aaa',
+    borderWidth: 1.6,
+    color: 'black',
+    fontSize: 16,
+    fontWeight: '500',
+    fontFamily: 'Inter',
+    width: '100%',
+    height: 60,
+    borderColor: '#606077ff',
+    backgroundColor: '#fff',
     padding: 10,
     marginVertical: 10,
     borderRadius: 5,

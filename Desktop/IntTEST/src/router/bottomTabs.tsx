@@ -11,6 +11,7 @@ export const BottomTabs = () => {
       <Tab.Screen name="Challenge 1" component={CalculatorScreen} />
       <Tab.Screen name="Challenge 2" component={NavbarScreen} />
       <Tab.Screen name="Challenge 3" component={TwoSumScreen} />
+      
     </Tab.Navigator>
   );
 } 
