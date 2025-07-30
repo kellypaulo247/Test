@@ -61,7 +61,6 @@ const Navbar: React.FC = () => {
         <View style={styles.navbar}>
           {isDesktop ? (
             <>
-             
               <View style={styles.linksContainer}>
                 {NAV_LINKS.map((link) => (
                   <TouchableOpacity
